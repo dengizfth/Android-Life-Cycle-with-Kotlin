@@ -9,14 +9,18 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 // Android life cycle , How to run Android system ? : answer :last in first out
 class MainActivity : AppCompatActivity() {
+    // Uygulama ikonuna/simgesine bastığımız zaman çalışan kısımdır.Uygulamada ilk bu method çalıştırılır.
+        //uygulama ortamını ilk açılırken oluşturulan kısım.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.i("Debug","onCreate Methodu çalıştı .")
-        // Uygulama ikonuna/simgesine bastığımız zaman çalışan kısımdır.Uygulamada ilk bu method çalıştırılır.
-        //uygulama ortamını ilk açılırken oluşturulan kısım.
-
+       
+        
+        //aşağıda (onSaveInstanceState() metodunda) kaydettiğimiz verileri ekran yatay ya da dikeye geçtiği zaman onCreat() metodu çalışıcak ve çalıştığı zaman
+        // kayıtlı bilgileri uygulama ocCreate() metodu çalışırken hemen verileri çekip sanki veri kaybı yaşanmamış gibi
+        // eski bilgileri tekrar getirip ekranda göstericek.
         if(savedInstanceState != null){
             val egerSilindiyse: String? = savedInstanceState?.getString("geciciKaydetKey")
             textView.text = egerSilindiyse
